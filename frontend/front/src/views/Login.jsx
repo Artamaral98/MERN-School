@@ -92,9 +92,10 @@ const Login = () => {
                   loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-orange-500 hover:bg-orange-600'
                 } border border-transparent rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500`}
               >
-                {loading ? 'Carregando...' : 'Criar conta'}
+                {loading ? 'Carregando...' : 'Entrar'}
               </button>
             </div>
+              <a href='/register'>Ou clique aqui para criar sua conta</a>
           </form>
           <div className="text-sm text-center"></div>
         </div>
