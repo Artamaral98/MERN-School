@@ -3,7 +3,7 @@ import dotenv from "dotenv"
 
 dotenv.config()
 
-export const dbConnection = () => {
+const dbConnection = () => {
     mongoose.connect(process.env.CONNECTION_STRING)
     .then(() => {
         console.log("Servidor conectado")
@@ -11,3 +11,5 @@ export const dbConnection = () => {
         console.log(err.message, "erro ao conectar ao servidor")
     })
 }
+
+export default dbConnection

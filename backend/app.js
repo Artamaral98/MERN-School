@@ -1,5 +1,5 @@
 import express from "express"
-import {dbConnection} from '../backend/src/utils/dbConnection.js'
+import dbConnection from "./src/utils/dbConnection.js"
 import cookieParser from "cookie-parser";
 import authRoutes from "./src/routes/authRoutes.js"
 import studentRoutes from "./src/routes/studentRoutes.js"

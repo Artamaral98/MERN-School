@@ -16,12 +16,19 @@ class AuthController {
             }
     
             const user = await User.findOne({email}).select("password")
-            const isPasswordValid = await bcrypt.compare(password, user.password);
-        
-            if(!user || !isPasswordValid) {
+
+            if (user) {
+                const isPasswordValid = await bcrypt.compare(password, user.password);
+
+                if(!isPasswordValid) {
+                    return res.status(400).json({message: "Usuário ou senha inválidos"})
+                }
+            }
+
+            if(!user) {
                 return res.status(400).json({message: "Usuário ou senha inválidos"})
             };
-    
+
             const token = tokenGen(user, res)
     
             return res.status(200).json({message: "Usuário logado", token: token})

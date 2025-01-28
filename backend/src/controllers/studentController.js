@@ -39,15 +39,13 @@ class StudentController {
             const updatedData = {name, age, classe}
 
             const student = await Student.findById(id);
-            console.log("Encontrado primeiro o aluno:", student)
             if (!student) {
                 return res.status(400).json({message: "Aluno não encontrado"})
             }
 
             await Student.findByIdAndUpdate(id,updatedData);
 
-            const newStudent = await Student.findById(id)   
-            console.log("O novo aluno após edição e resgate no DB: ", newStudent)       
+            const newStudent = await Student.findById(id)          
 
             return res.status(200).json({
                 message: "Dados alterados", newStudent})

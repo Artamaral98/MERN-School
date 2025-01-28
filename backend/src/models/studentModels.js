@@ -8,13 +8,14 @@ const StudentSchema = new mongoose.Schema({
     },
     age: {
         type: Number,
-        required: true,
-        maxLength: [2, "O campo deve conter no máximo 2 caractéres"]
+        required: [true, "Preencha o campo idade"],
+        min: [1, "A idade não pode ser inferior a 1"],
+        max:[100, "A idade não pode ser superior a 100"],
     },
     classe: {
         type: String,
         required: true,
-        maxLength: [3, "O campo classe deve conter no máximo 5 caractéres"],
+        maxLength: [3, "O campo turma deve conter no máximo 3 caractéres"],
     },
 },
 {timestamps: true})
