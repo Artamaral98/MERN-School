@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import api from '../api/api';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate()
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -19,13 +21,14 @@ const Register = () => {
 
       setEmail('');
       setPassword('');
-      toast.success(response.data.message || 'Usuário registrado com sucesso!');
+      toast.success(response.data.message || 'Usuário registrado com sucesso');
+      navigate("/login")
     } catch (error) {
 
       if (error.response && error.response.data) {
         toast.error(error.response.data.message || 'Erro no registro.');
       } else {
-        toast.error('Ocorreu um erro inesperado. Tente novamente.');
+        toast.error('Ocorreu um erro desconhecido, tente novamente');
       }
     } finally {
       setLoading(false); 
