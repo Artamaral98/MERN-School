@@ -8,7 +8,7 @@ const Pagination = ({ currentPage, totalPages, setCurrentPage }) => {
   };
 
   return (
-    <div className="flex justify-center items-center gap-4 px-6 py-4 max-w-5xl mx-auto">
+    <div className="flex justify-center items-center gap-4 px-6 py-4 max-w-5xl mx-auto bg-white">
       <button
         onClick={handlePrevPage}
         disabled={currentPage === 1}

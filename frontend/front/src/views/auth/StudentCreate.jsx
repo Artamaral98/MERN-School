@@ -4,6 +4,7 @@ import firstLetterToUpperCase from '../../utils/firstLetterToUpperCase';
 import useFetchStudents from "../../hooks/useFetchStudents";
 import toast from 'react-hot-toast';
 import api from '../../api/api';
+import Sidebar from '../Components/Sidebar';
 
 
 
@@ -66,25 +67,16 @@ const StudentCreate = () => {
 
   return (
     <div className="flex min-h-screen">
-      <div className="w-[300px] bg-[#DD4B25] text-white ">
-        <div className="p-7" >
-          <a href='/home' className="text-2xl font-bold">CODETECH</a>
-          <p className="text-sm">Desenvolvimento de sistemas</p>
-        </div>
-        <div className="bg-[#C64422] p-4">
-          <span>Alunos</span>
-        </div>
-      </div>
-
-      <main className="flex-1 p-6">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-xl font-semibold">Alunos</h2>
-          <a href="/home" className="px-4 py-2 bg-[#DD4B25] text-white rounded hover:bg-[#C64422] transition-colors">
+      <Sidebar />
+      <main className="flex-1 p-14">
+        <div className="flex justify-between items-center mb-15">
+          <h2 className="text-xl font-bold px-7">Alunos</h2>
+          <a href="/home" className="px-15 py-3 bg-[#DD4B25] text-white rounded-md hover:bg-[#C64422] transition-colors">
             Voltar
           </a>
         </div>
 
-        <div className="max-w-3xl p-6 bg-white rounded-lg shadow-md">
+        <div className="max-w-5xl h-180 p-6 bg-white rounded-lg shadow-md">
           <form className="space-y-6" onSubmit={(e) => {
             e.preventDefault()
             handleAddNameInputFocus()
@@ -100,7 +92,7 @@ const StudentCreate = () => {
                   type="text"
                   ref={nameInputRef}
                   id="nome"
-                  className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#DD4B25] focus:border-transparent"
+                  className="w-full px-3 py-2 bg-gray-100 border-none rounded-md focus:outline-none focus:ring-2 focus:ring-[#DD4B25] focus:border-transparent"
                 />
               </div>
               <div>
@@ -112,7 +104,7 @@ const StudentCreate = () => {
                   onChange={(e) => setNewStudentAge(e.target.value)}
                   type="number"
                   id="idade"
-                  className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#DD4B25] focus:border-transparent"
+                  className="w-full px-3 py-2 bg-gray-100 border-none rounded-md focus:outline-none focus:ring-2 focus:ring-[#DD4B25] focus:border-transparent"
                 />
               </div>
             </div>
@@ -126,22 +118,22 @@ const StudentCreate = () => {
                   onChange={(e) => setNewStudentClasse(e.target.value)}
                   type="text"
                   id="turma"
-                  className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#DD4B25] focus:border-transparent"
+                  className="w-full px-3 py-2 bg-gray-100 border-none rounded-md focus:outline-none focus:ring-2 focus:ring-[#DD4B25] focus:border-transparent"
               />
             </div>
 
             <button
               type="submit"
-              className="px-8 py-2 bg-[#DD4B25] text-white rounded hover:bg-[#C64422] transition-colors"
+              className="px-14 py-3 bg-[#DD4B25] text-white rounded-md hover:bg-[#C64422] transition-colors"
             >
               Salvar
             </button>
           </form>
         </div>
 
-        <footer className="fixed bottom-4 left-[0px] right-9 px-6">
-          <p className="text-sm text-white">
-            Desenvolvido por <span className="text-white font-bold">Arthur Amaral</span> Codetech
+        <footer className="fixed bottom-4 left-[0px] right-9 px-4 text-white">
+          <p className="text-xs">
+            Desenvolvido por <span className="text-white font-bold text-xs">Arthur Amaral,</span> Codetech
           </p>
         </footer>
       </main>

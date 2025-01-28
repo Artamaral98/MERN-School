@@ -99,8 +99,8 @@ const Login = () => {
           </form>
           <div className="text-sm text-center"></div>
         </div>
-        <footer className="absolute bottom-4 text-center text-sm font-bold text-gray-800">
-          Desenvolvido por Arthur Amaral, Codetech
+        <footer className="absolute bottom-4 text-center text-sm text-gray-800">
+          Desenvolvido por <span className='font-bold'>Arthur Amaral</span>, Codetech
         </footer>
       </div>
     </div>

@@ -8,8 +8,7 @@ import DeleteModal from "../Components/DeleteModal";
 import Header from "../Components/Header";
 import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
-
-
+import { useAuth } from "../../context/AuthContext";
 
 
 function Home() {
@@ -31,13 +30,23 @@ function Home() {
   const { currentPage, totalPages, displayedStudents, setCurrentPage } =
     usePagination(students);
 
+    const {logout} = useAuth()
+
+    const handleLogout = () => {
+      logout()
+      navigate("login")
+    }
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="bg-orange-600 text-white py-5 px-8">
+    <div className="min-h-screen">
+      <div className="bg-orange-600 text-white py-5 px-8 flex items-center justify-between">
         <h1 className="text-3xl font-extrabold">CODETECH</h1>
+        <button onClick={logout} className="px-10 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-colors">
+            Logout
+          </button>
       </div>
 
-      <div className="flex items-center justify-between bg-white shadow-md px-12 py-6">
+      <div className="flex items-center justify-between shadow-md px-16 py-6">
         <h2 className="text-xl font-bold text-black">Alunos</h2>
         <button
           onClick={() => navigate("/novo-aluno")}
@@ -48,7 +57,7 @@ function Home() {
       </div>
 
       <div className="px-6 flex justify-center">
-        <div className="bg-gray-100 rounded-lg shadow w-full max-w-5xl">
+        <div className="bg-white rounded-lg shadow w-full max-w-7xl">
           <table className="w-full bg-white shadow-md rounded-lg">
             <thead className="bg-gray-100">
               <Header />

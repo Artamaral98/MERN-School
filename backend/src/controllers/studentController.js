@@ -19,12 +19,6 @@ class StudentController {
             if(!name, !age, !classe) {
                 return res.status(400).json({message: "Preencha todos os campos"})
             }
-            
-            const alreadyRegistered= await Student.findOne({name, age, classe})
-
-            if (alreadyRegistered) {
-                return res.status(400).json({message: "Aluno já registrado"})
-            };
 
             const student = await Student.create({name, age, classe})
             return res.status(201).json({message: "Usuário registrado", student})
