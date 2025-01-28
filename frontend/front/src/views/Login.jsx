@@ -23,7 +23,6 @@ const Login = () => {
         password: password,
       });
 
-
       login(response.data.token)
 
       setEmail('')
@@ -32,7 +31,7 @@ const Login = () => {
       toast.success(response.data.message);
       navigate('/home')
     } catch (error) {
-
+      console.log(error)
       if (error.response && error.response.data) {
         toast.error(error.response.data.message)
       } else {

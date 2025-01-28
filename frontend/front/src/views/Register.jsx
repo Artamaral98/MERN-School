@@ -25,8 +25,12 @@ const Register = () => {
       navigate("/login")
     } catch (error) {
 
-      if (error.response && error.response.data) {
-        toast.error(error.response.data.message || 'Erro no registro.');
+      console.log(error)
+      if (error.response.data.message) {
+        toast.error(error.response.data.message);
+      }
+      if (error.response.data.errors.password) {
+        toast.error(error.response.data.errors.password.message);
       } else {
         toast.error('Ocorreu um erro desconhecido, tente novamente');
       }

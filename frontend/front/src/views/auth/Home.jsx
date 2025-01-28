@@ -40,24 +40,23 @@ function Home() {
   return (
     <div className="min-h-screen">
       <div className="bg-orange-600 text-white py-5 px-8 flex items-center justify-between">
-        <h1 className="text-3xl font-extrabold">CODETECH</h1>
-        <button onClick={logout} className="px-10 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-colors">
+        <h1 className="text-4xl font-extrabold">CODETECH</h1>
+        <button onClick={logout} className="px-10 py-2 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors">
             Logout
           </button>
       </div>
 
       <div className="flex items-center justify-between shadow-md px-16 py-6">
-        <h2 className="text-xl font-bold text-black">Alunos</h2>
+        <h2 className="text-2xl font-bold text-black">Alunos</h2>
         <button
           onClick={() => navigate("/novo-aluno")}
-          className="px-4 py-2 bg-orange-500 text-white rounded-md shadow hover:bg-orange-600"
+          className="px-6 py-3 bg-orange-500 text-white rounded-xl shadow hover:bg-orange-600"
         >
           Criar Registro
         </button>
       </div>
 
-      <div className="px-6 flex justify-center">
-        <div className="bg-white rounded-lg shadow w-full max-w-7xl">
+      <div className="px-25 flex justify-center">
           <table className="w-full bg-white shadow-md rounded-lg">
             <thead className="bg-gray-100">
               <Header />
@@ -87,7 +86,6 @@ function Home() {
               ))}
             </tbody>
           </table>
-        </div>
       </div>
 
       <Pagination

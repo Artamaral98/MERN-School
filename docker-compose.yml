@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - mongo
+    
+    env_file:
+      - ./backend/.env
+
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=MONGO_INITDB_ROOT_USERNAME
+      - MONGO_URI=CONNECTION_STRING
+
+  frontend:
+    build:
+      context: ./frontend/front
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "5174:5174"
+    volumes:
+      - ./frontend:/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+  mongo:
+    image: mongo:6.0
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    env_file:
+      - ./backend/.env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: MONGO_INITDB_ROOT_USERNAME
+      MONGO_INITDB_ROOT_PASSWORD: MONGO_INITDB_ROOT_PASSWORD
+
+volumes:
+  mongo_data:

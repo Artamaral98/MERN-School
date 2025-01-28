@@ -35,6 +35,7 @@ const StudentCreate = () => {
       
     } catch (error) {
       
+      console.log(error)
       if(error.response.data.message) {
         toast.error(error.response.data.message)
       }
@@ -45,7 +46,10 @@ const StudentCreate = () => {
 
       if(error.response.data.errors.name) {
         toast.error(error.response.data.errors.name.message)
-      
+
+      if(error.response.data.errors.age) {
+        toast.error(error.response.data.errors.age.message)
+      }
     }
   }
 }
