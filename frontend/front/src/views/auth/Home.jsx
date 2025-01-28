@@ -33,11 +33,11 @@ function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-orange-600 text-white py-4 px-6">
+      <div className="bg-orange-600 text-white py-5 px-8">
         <h1 className="text-3xl font-extrabold">CODETECH</h1>
       </div>
 
-      <div className="flex items-center justify-between bg-white shadow-md px-6 py-4">
+      <div className="flex items-center justify-between bg-white shadow-md px-12 py-6">
         <h2 className="text-xl font-bold text-black">Alunos</h2>
         <button
           onClick={() => navigate("/novo-aluno")}
@@ -64,17 +64,13 @@ function Home() {
                   <td className="py-3 px-4">{student.classe}</td>
                   <td className="py-3 px-4 text-center">
                     <button
-                      onClick={() => handleEdit(student._id)}
-                      className="text-blue-600 hover:text-blue-800"
-                    >
+                      onClick={() => handleEdit(student._id)}>
                       <FaEdit />
                     </button>
                   </td>
                   <td className="py-3 px-4 text-center">
                     <button
-                      onClick={() => openDeleteModal(student._id)}
-                      className="text-red-600 hover:text-red-800"
-                    >
+                      onClick={() => openDeleteModal(student._id)}>
                       <AiFillDelete />
                     </button>
                   </td>
