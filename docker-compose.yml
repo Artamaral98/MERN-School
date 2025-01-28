@@ -16,9 +16,6 @@ services:
     env_file:
       - ./backend/.env
 
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=MONGO_INITDB_ROOT_USERNAME
-      - MONGO_URI=CONNECTION_STRING
 
   frontend:
     build:
@@ -42,8 +39,8 @@ services:
     env_file:
       - ./backend/.env
     environment:
-      MONGO_INITDB_ROOT_USERNAME: MONGO_INITDB_ROOT_USERNAME
-      MONGO_INITDB_ROOT_PASSWORD: MONGO_INITDB_ROOT_PASSWORD
+      MONGO_INITDB_ROOT_USERNAME: arthuramaral1509
+      MONGO_INITDB_ROOT_PASSWORD: 4d5TLhvYoPqX97vn
 
 volumes:
   mongo_data:
