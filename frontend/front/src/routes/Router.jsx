@@ -7,7 +7,7 @@ const Router = () => {
     const protectedRoutes = GetRoutes()
 
     const allRoutes = [
-      protectedRoutes,
+      ...protectedRoutes,
       ...publicRoutes,
     ]
   
@@ -16,3 +16,4 @@ const Router = () => {
 }
 
 export default Router
+
