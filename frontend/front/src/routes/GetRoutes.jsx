@@ -9,10 +9,8 @@ const GetRoutes = () => {
     }));
 
 
-    return {
-        path: '/',
-        children: routesWithProtection
-    }
+    return routesWithProtection
+
 }
 
 export default GetRoutes
