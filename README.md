@@ -1,4 +1,3 @@
-# ParkAPI
 
 Bem-vindo ao **MERN-School**, uma alpicação full stack desenvolvida em React e Express para gerenciamento escolar.
 
