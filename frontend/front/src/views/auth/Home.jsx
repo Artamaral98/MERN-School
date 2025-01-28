@@ -1,0 +1,121 @@
+import { useNavigate } from "react-router-dom";
+import useFetchStudents from "../../hooks/useFetchStudents";
+import useStudentActions from "../../hooks/useStudentsActions";
+import usePagination from "../../hooks/usePagination";
+import Pagination from "../Components/Pagination";
+import EditModal from "../Components/EditModal";
+import DeleteModal from "../Components/DeleteModal";
+import Header from "../Components/Header";
+import { FaEdit } from "react-icons/fa";
+import { AiFillDelete } from "react-icons/ai";
+
+
+
+
+function Home() {
+  const navigate = useNavigate();
+  const { students, setStudents } = useFetchStudents()
+  const {
+    isEditModalOpen,
+    setIsEditModalOpen,
+    isDeleteModalOpen,
+    setIsDeleteModalOpen,
+    editStudents,
+    setEditStudents,
+    handleEdit,
+    handleSaveEdit,
+    openDeleteModal,
+    handleDelete,
+  } = useStudentActions(students, setStudents);
+
+  const { currentPage, totalPages, displayedStudents, setCurrentPage } =
+    usePagination(students);
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <div className="bg-orange-600 text-white py-4 px-6">
+        <h1 className="text-3xl font-extrabold">CODETECH</h1>
+      </div>
+
+      <div className="flex items-center justify-between bg-white shadow-md px-6 py-4">
+        <h2 className="text-xl font-bold text-black">Alunos</h2>
+        <button
+          onClick={() => navigate("/novo-aluno")}
+          className="px-4 py-2 bg-orange-500 text-white rounded-md shadow hover:bg-orange-600"
+        >
+          Criar Registro
+        </button>
+      </div>
+
+      <div className="px-6 flex justify-center">
+        <div className="bg-gray-100 rounded-lg shadow w-full max-w-5xl">
+          <table className="w-full bg-white shadow-md rounded-lg">
+            <thead className="bg-gray-100">
+              <Header />
+            </thead>
+            <tbody>
+              {displayedStudents.map((student) => (
+                <tr
+                  key={student._id}
+                  className="hover:bg-gray-50 border-b border-gray-200"
+                >
+                  <td className="py-3 px-4">{student.name}</td>
+                  <td className="py-3 px-4">{student.age}</td>
+                  <td className="py-3 px-4">{student.classe}</td>
+                  <td className="py-3 px-4 text-center">
+                    <button
+                      onClick={() => handleEdit(student._id)}
+                      className="text-blue-600 hover:text-blue-800"
+                    >
+                      <FaEdit />
+                    </button>
+                  </td>
+                  <td className="py-3 px-4 text-center">
+                    <button
+                      onClick={() => openDeleteModal(student._id)}
+                      className="text-red-600 hover:text-red-800"
+                    >
+                      <AiFillDelete />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        setCurrentPage={setCurrentPage}
+      />
+
+      <EditModal
+        isEditModalOpen={isEditModalOpen}
+        editStudentName={editStudents.name}
+        setEditStudentName={(name) =>
+          setEditStudents((prev) => ({ ...prev, name }))
+        }
+        editStudentAge={editStudents.age}
+        setEditStudentAge={(age) =>
+          setEditStudents((prev) => ({ ...prev, age }))
+        }
+        editStudentClasse={editStudents.classe}
+        setEditStudentClasse={(classe) =>
+          setEditStudents((prev) => ({ ...prev, classe }))
+        }
+        setIsEditModalOpen={setIsEditModalOpen}
+        handleSaveEdit={handleSaveEdit}
+      />
+
+      <DeleteModal
+        isDeleteModalOpen={isDeleteModalOpen}
+        setIsDeleteModalOpen={setIsDeleteModalOpen}
+        handleDelete={handleDelete}
+      />
+    </div>
+  );
+}
+
+export default Home;
