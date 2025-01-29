@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const StudentSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
+        required: [true, "Preencha o campo Nome"],
         maxLength: [14, "O campo nome deve conter no máximo 14 caractéres"]
     },
     age: {

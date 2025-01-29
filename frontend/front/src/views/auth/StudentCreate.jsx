@@ -35,12 +35,14 @@ const StudentCreate = () => {
       
     } catch (error) {
 
-      if(error.response.data.errors.age) {
-        toast.error(error.response.data.errors.age.message)
-      }
-      
+      console.log(error)
+
       if(error.response.data.message) {
         toast.error(error.response.data.message)
+      }
+
+      if(error.response.data.errors.age) {
+        toast.error(error.response.data.errors.age.message)
       }
 
       if (error.response.data.errors.classe) {
