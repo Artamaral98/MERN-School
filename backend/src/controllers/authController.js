@@ -52,7 +52,7 @@ class AuthController {
                 return res.status(400).json({message: "Preencha todos os campos"})
             }
         
-            const isRegistered = await User.findOne({email})
+            const isRegistered = await User.findOne({email}).select("password")
         
             if (isRegistered) {
                 return res.status(400).json({message: "Usuário já registrado"})
